@@ -1,8 +1,5 @@
 name: PullRequest
-on:
-  pull_request:
-    branches:
-      - master
+on: [pull_request]
 jobs:
   PullRequest:
     runs-on: ubuntu-latest
@@ -17,6 +14,6 @@ jobs:
           envkey_POSTGRES_PASSWORD: "postgres"
           envkey_POSTGRES_DB: "students__tests"
           envkey_DATABASE_URL: "postgres://postgres:postgres@db_postgres_students:5432/students__tests"
-          file_name: ".env.test"
+          file_name: .env.test
       - name: Run tests
         run: docker-compose -f docker-compose-test.yml run node_app npm run test
